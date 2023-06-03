@@ -20,20 +20,10 @@ import java.time.OffsetDateTime;
  */
 public class Store {
 	
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private String _serverUrl;
-	private String _language;
-	private String _sdkVersion;
-	private String _genVersion;
+	private SDKConfiguration sdkConfiguration;
 
-	public Store(HTTPClient defaultClient, HTTPClient securityClient, String serverUrl, String language, String sdkVersion, String genVersion) {
-		this._defaultClient = defaultClient;
-		this._securityClient = securityClient;
-		this._serverUrl = serverUrl;
-		this._language = language;
-		this._sdkVersion = sdkVersion;
-		this._genVersion = genVersion;
+	public Store(SDKConfiguration sdkConfiguration) {
+		this.sdkConfiguration = sdkConfiguration;
 	}
 
     /**
@@ -44,7 +34,7 @@ public class Store {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.DeleteOrderResponse deleteOrder(Testing.petstore.models.operations.DeleteOrderRequest request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(Testing.petstore.models.operations.DeleteOrderRequest.class, baseUrl, "/store/order/{orderId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -52,9 +42,9 @@ public class Store {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this.sdkConfiguration.defaultClient;
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -77,7 +67,7 @@ public class Store {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.GetInventoryResponse getInventory(Testing.petstore.models.operations.GetInventorySecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/store/inventory");
         
         HTTPRequest req = new HTTPRequest();
@@ -85,9 +75,9 @@ public class Store {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -117,7 +107,7 @@ public class Store {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.GetOrderByIdResponse getOrderById(Testing.petstore.models.operations.GetOrderByIdRequest request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(Testing.petstore.models.operations.GetOrderByIdRequest.class, baseUrl, "/store/order/{orderId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -125,9 +115,9 @@ public class Store {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this.sdkConfiguration.defaultClient;
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -163,7 +153,7 @@ public class Store {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.PlaceOrderFormResponse placeOrderForm(Testing.petstore.models.shared.Order request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/store/order");
         
         HTTPRequest req = new HTTPRequest();
@@ -173,9 +163,9 @@ public class Store {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this.sdkConfiguration.defaultClient;
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -206,7 +196,7 @@ public class Store {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.PlaceOrderJsonResponse placeOrderJson(Testing.petstore.models.shared.Order request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/store/order");
         
         HTTPRequest req = new HTTPRequest();
@@ -216,9 +206,9 @@ public class Store {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this.sdkConfiguration.defaultClient;
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
@@ -249,7 +239,7 @@ public class Store {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.PlaceOrderRawResponse placeOrderRaw(byte[] request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/store/order");
         
         HTTPRequest req = new HTTPRequest();
@@ -259,9 +249,9 @@ public class Store {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._defaultClient;
+        HTTPClient client = this.sdkConfiguration.defaultClient;
         HttpResponse<byte[]> httpRes = client.send(req);
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");

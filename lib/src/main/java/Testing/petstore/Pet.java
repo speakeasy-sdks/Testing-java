@@ -19,20 +19,10 @@ import org.apache.http.NameValuePair;
  */
 public class Pet {
 	
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private String _serverUrl;
-	private String _language;
-	private String _sdkVersion;
-	private String _genVersion;
+	private SDKConfiguration sdkConfiguration;
 
-	public Pet(HTTPClient defaultClient, HTTPClient securityClient, String serverUrl, String language, String sdkVersion, String genVersion) {
-		this._defaultClient = defaultClient;
-		this._securityClient = securityClient;
-		this._serverUrl = serverUrl;
-		this._language = language;
-		this._sdkVersion = sdkVersion;
-		this._genVersion = genVersion;
+	public Pet(SDKConfiguration sdkConfiguration) {
+		this.sdkConfiguration = sdkConfiguration;
 	}
 
     /**
@@ -44,7 +34,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.AddPetFormResponse addPetForm(Testing.petstore.models.shared.Pet request, Testing.petstore.models.operations.AddPetFormSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet");
         
         HTTPRequest req = new HTTPRequest();
@@ -57,9 +47,9 @@ public class Pet {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -97,7 +87,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.AddPetJsonResponse addPetJson(Testing.petstore.models.shared.Pet request, Testing.petstore.models.operations.AddPetJsonSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet");
         
         HTTPRequest req = new HTTPRequest();
@@ -110,9 +100,9 @@ public class Pet {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -150,7 +140,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.AddPetRawResponse addPetRaw(byte[] request, Testing.petstore.models.operations.AddPetRawSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet");
         
         HTTPRequest req = new HTTPRequest();
@@ -163,9 +153,9 @@ public class Pet {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -202,7 +192,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.DeletePetResponse deletePet(Testing.petstore.models.operations.DeletePetRequest request, Testing.petstore.models.operations.DeletePetSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(Testing.petstore.models.operations.DeletePetRequest.class, baseUrl, "/pet/{petId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -210,7 +200,7 @@ public class Pet {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.Map<String, java.util.List<String>> headers = Testing.petstore.utils.Utils.getHeaders(request);
         if (headers != null) {
             for (java.util.Map.Entry<String, java.util.List<String>> header : headers.entrySet()) {
@@ -220,7 +210,7 @@ public class Pet {
             }
         }
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -245,7 +235,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.FindPetsByStatusResponse findPetsByStatus(Testing.petstore.models.operations.FindPetsByStatusRequest request, Testing.petstore.models.operations.FindPetsByStatusSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet/findByStatus");
         
         HTTPRequest req = new HTTPRequest();
@@ -253,7 +243,7 @@ public class Pet {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.List<NameValuePair> queryParams = Testing.petstore.utils.Utils.getQueryParams(Testing.petstore.models.operations.FindPetsByStatusRequest.class, request, null);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -261,7 +251,7 @@ public class Pet {
             }
         }
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -299,7 +289,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.FindPetsByTagsResponse findPetsByTags(Testing.petstore.models.operations.FindPetsByTagsRequest request, Testing.petstore.models.operations.FindPetsByTagsSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet/findByTags");
         
         HTTPRequest req = new HTTPRequest();
@@ -307,7 +297,7 @@ public class Pet {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.List<NameValuePair> queryParams = Testing.petstore.utils.Utils.getQueryParams(Testing.petstore.models.operations.FindPetsByTagsRequest.class, request, null);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -315,7 +305,7 @@ public class Pet {
             }
         }
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -353,7 +343,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.GetPetByIdResponse getPetById(Testing.petstore.models.operations.GetPetByIdRequest request, Testing.petstore.models.operations.GetPetByIdSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(Testing.petstore.models.operations.GetPetByIdRequest.class, baseUrl, "/pet/{petId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -361,9 +351,9 @@ public class Pet {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -400,7 +390,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.UpdatePetWithFormResponse updatePetWithForm(Testing.petstore.models.operations.UpdatePetWithFormRequest request, Testing.petstore.models.operations.UpdatePetWithFormSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(Testing.petstore.models.operations.UpdatePetWithFormRequest.class, baseUrl, "/pet/{petId}", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -408,7 +398,7 @@ public class Pet {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.List<NameValuePair> queryParams = Testing.petstore.utils.Utils.getQueryParams(Testing.petstore.models.operations.UpdatePetWithFormRequest.class, request, null);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -416,7 +406,7 @@ public class Pet {
             }
         }
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -441,7 +431,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.UpdatePetFormResponse updatePetForm(Testing.petstore.models.shared.Pet request, Testing.petstore.models.operations.UpdatePetFormSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet");
         
         HTTPRequest req = new HTTPRequest();
@@ -454,9 +444,9 @@ public class Pet {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -494,7 +484,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.UpdatePetJsonResponse updatePetJson(Testing.petstore.models.shared.Pet request, Testing.petstore.models.operations.UpdatePetJsonSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet");
         
         HTTPRequest req = new HTTPRequest();
@@ -507,9 +497,9 @@ public class Pet {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -547,7 +537,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.UpdatePetRawResponse updatePetRaw(byte[] request, Testing.petstore.models.operations.UpdatePetRawSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(baseUrl, "/pet");
         
         HTTPRequest req = new HTTPRequest();
@@ -560,9 +550,9 @@ public class Pet {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json;q=1, application/xml;q=0");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -599,7 +589,7 @@ public class Pet {
      * @throws Exception if the API call fails
      */
     public Testing.petstore.models.operations.UploadFileResponse uploadFile(Testing.petstore.models.operations.UploadFileRequest request, Testing.petstore.models.operations.UploadFileSecurity security) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = this.sdkConfiguration.serverUrl;
         String url = Testing.petstore.utils.Utils.generateURL(Testing.petstore.models.operations.UploadFileRequest.class, baseUrl, "/pet/{petId}/uploadImage", request, null);
         
         HTTPRequest req = new HTTPRequest();
@@ -609,7 +599,7 @@ public class Pet {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.List<NameValuePair> queryParams = Testing.petstore.utils.Utils.getQueryParams(Testing.petstore.models.operations.UploadFileRequest.class, request, null);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -617,7 +607,7 @@ public class Pet {
             }
         }
         
-        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = Testing.petstore.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 

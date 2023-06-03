@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'Testing.petstore:petstore:1.0.1'
+implementation 'Testing.petstore:petstore:1.1.0'
 ```
 <!-- End SDK Installation -->
 
