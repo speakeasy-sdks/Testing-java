@@ -68,7 +68,7 @@ public class Application {
                 .build();
 
             GetInventoryResponse res = sdk.store.getInventory(new GetInventorySecurity("omnis") {{
-                apiKey = "YOUR_API_KEY_HERE";
+                apiKey = "";
             }});
 
             if (res.getInventory200ApplicationJSONObject != null) {

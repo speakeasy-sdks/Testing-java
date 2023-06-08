@@ -48,7 +48,7 @@ public class Application {
             }};            
 
             AddPetFormResponse res = sdk.pet.addPetForm(req, new AddPetFormSecurity("perferendis") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {

@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'Testing.petstore:petstore:1.1.1'
+implementation 'Testing.petstore:petstore:1.2.0'
 ```
 <!-- End SDK Installation -->
 
@@ -61,7 +61,7 @@ public class Application {
             }};            
 
             AddPetFormResponse res = sdk.pet.addPetForm(req, new AddPetFormSecurity("perferendis") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {

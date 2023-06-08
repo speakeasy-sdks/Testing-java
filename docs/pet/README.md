@@ -63,7 +63,7 @@ public class Application {
             }};            
 
             AddPetFormResponse res = sdk.pet.addPetForm(req, new AddPetFormSecurity("esse") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {
@@ -127,7 +127,7 @@ public class Application {
             }};            
 
             AddPetJsonResponse res = sdk.pet.addPetJson(req, new AddPetJsonSecurity("natus") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {
@@ -166,7 +166,7 @@ public class Application {
             Testing.petstore.models.. req = "sed".getBytes()            
 
             AddPetRawResponse res = sdk.pet.addPetRaw(req, new AddPetRawSecurity("iste") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {
@@ -204,7 +204,7 @@ public class Application {
             }};            
 
             DeletePetResponse res = sdk.pet.deletePet(req, new DeletePetSecurity("laboriosam") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.statusCode == 200) {
@@ -243,7 +243,7 @@ public class Application {
             }};            
 
             FindPetsByStatusResponse res = sdk.pet.findPetsByStatus(req, new FindPetsByStatusSecurity("saepe") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pets != null) {
@@ -285,7 +285,7 @@ public class Application {
             }};            
 
             FindPetsByTagsResponse res = sdk.pet.findPetsByTags(req, new FindPetsByTagsSecurity("iure") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pets != null) {
@@ -321,7 +321,7 @@ public class Application {
             GetPetByIdRequest req = new GetPetByIdRequest(902349L);            
 
             GetPetByIdResponse res = sdk.pet.getPetById(req, new GetPetByIdSecurity() {{
-                apiKey = "YOUR_API_KEY_HERE";
+                apiKey = "";
             }});
 
             if (res.pet != null) {
@@ -360,7 +360,7 @@ public class Application {
             }};            
 
             UpdatePetWithFormResponse res = sdk.pet.updatePetWithForm(req, new UpdatePetWithFormSecurity("dolores") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.statusCode == 200) {
@@ -426,7 +426,7 @@ public class Application {
             }};            
 
             UpdatePetFormResponse res = sdk.pet.updatePetForm(req, new UpdatePetFormSecurity("quis") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {
@@ -484,7 +484,7 @@ public class Application {
             }};            
 
             UpdatePetJsonResponse res = sdk.pet.updatePetJson(req, new UpdatePetJsonSecurity("quasi") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {
@@ -523,7 +523,7 @@ public class Application {
             Testing.petstore.models.. req = "reiciendis".getBytes()            
 
             UpdatePetRawResponse res = sdk.pet.updatePetRaw(req, new UpdatePetRawSecurity("voluptatibus") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.pet != null) {
@@ -562,7 +562,7 @@ public class Application {
             }};            
 
             UploadFileResponse res = sdk.pet.uploadFile(req, new UploadFileSecurity("voluptatibus") {{
-                petstoreAuth = "Bearer YOUR_ACCESS_TOKEN_HERE";
+                petstoreAuth = "";
             }});
 
             if (res.apiResponse != null) {
