@@ -41,7 +41,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'Testing'
             artifactId = 'petstore'
-            version = '1.2.0'
+            version = '1.2.1'
 
             from components.java
 
